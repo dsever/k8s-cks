@@ -1,0 +1,18 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequiredimages
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequiredImages
+        listLind: K8sRequiredImagesList
+        plural: k8srequiredimages
+        singular: k8srequiredimages
+      validation:
+        openAPIV3Schema:
+          properties:
+            images:
+              type: array
+              items: string
