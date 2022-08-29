@@ -12,7 +12,8 @@ spec:
           properties:
             images:
               type: array
-              items: string
+              items:
+                type: string
    targets:
      - target: admission.k8s.gatekeeper.sh
        rego: |
