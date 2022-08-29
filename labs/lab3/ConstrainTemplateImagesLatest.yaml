@@ -30,10 +30,10 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Pods"]
-    parameters:
-      images:
-        - latest
-        - stable
+  parameters:
+    images:
+      - latest
+      - stable
 ---
 apiVersion: v1
 kind: Pod
