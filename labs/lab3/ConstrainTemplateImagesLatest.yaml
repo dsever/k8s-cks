@@ -19,6 +19,13 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
+
+          violation[{"msg": msg}]{
+          image:=input.review.object.spec.containers[_].image
+
+          msg:=sprintf("Image %v missing tag", image)
+
+                    }
           violation[{"msg": msg}]{
           image:=input.review.object.spec.containers[_].image
           not count(split(image,":"))==2
