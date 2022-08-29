@@ -23,7 +23,7 @@ spec:
             c := input_containers(c)
             images = input.parameters.images
             endswith(image,[images])
-            msg:=sprintf("Some example")
+            msg:=msg := sprintf("REVIEW OBJECT: %v", [input.review])
 
           }
           input_containers(c){
