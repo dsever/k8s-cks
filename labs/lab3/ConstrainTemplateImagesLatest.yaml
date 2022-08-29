@@ -23,7 +23,7 @@ spec:
 
 
           violation[{"msg": msg}]{
-          input.review.kind.kind=="Pod"
+          input.review.kind.kind = "Pod"
 
           msg:=sprintf("Pod not allowd", image)
 
