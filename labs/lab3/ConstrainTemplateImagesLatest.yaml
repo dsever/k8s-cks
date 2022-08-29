@@ -33,4 +33,21 @@ spec:
     parameters:
       images:
         - latest
-        - stable   
+        - stable
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-check-constrain
+  labels:
+    name: pod-check-constrain
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
