@@ -20,16 +20,16 @@ spec:
        rego: |
           package k8srequiredimagestags
           violation[{"msg": msg}]{
-            c := input_containers(c)
-            images = input.parameters.images
-            endswith(image,[images])
+#            c := input_containers(c)
+#            images = input.parameters.images
+#            endswith(image,[images])
             msg:=sprintf("REVIEW OBJECT: %v", [input.review])
 
           }
-          input_containers(c){
-            c := input.review.object.spec.containers[_].image
+#          input_containers(c){
+#            c := input.review.object.spec.containers[_].image
 
-          }
+#          }
 ---
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sRequiredImagesTags
