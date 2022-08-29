@@ -16,3 +16,12 @@ spec:
             images:
               type: array
               items: string
+   targets:
+     - target: admission.k8s.gatekeeper.sh
+       rego: |
+          package k8srequiredimages
+
+          deny[{"msg": msg, "details": {"not supported": not_supported }}]{
+            provided := {labels}
+
+          }
