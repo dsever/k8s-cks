@@ -21,7 +21,7 @@ spec:
           package k8srequiredimagestags
           violation[{"msg": msg}]{
             c := input_containers(c)
-            images = input.parameters.images
+            images = input.parameters.images[_]
             endswith(c,images)
             msg:=sprintf("REVIEW OBJECT: %v", [input.review])
 
