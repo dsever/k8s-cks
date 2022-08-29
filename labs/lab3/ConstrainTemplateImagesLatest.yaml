@@ -19,5 +19,18 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
-
           violation[{"msg": "hello"}]
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredImagesTags
+metadata:
+  name: image-tag-constraints
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pods"]
+    parameters:
+      images:
+        - latest
+        - stable   
