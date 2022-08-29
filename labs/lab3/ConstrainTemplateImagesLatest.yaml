@@ -19,6 +19,12 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
+          package kubernetes.admission
+          violation[{"msg": msg}] {
+                    input.review.kind.kind = "Pod"
+                    input.review.operation = "CREATE"
+                    msg := "LoadBalancer Services are not permitted"
+        }
 
 
 
