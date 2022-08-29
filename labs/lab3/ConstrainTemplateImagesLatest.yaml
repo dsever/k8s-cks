@@ -1,15 +1,12 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata:
-  name: k8srequiredtags
+  name: k8srequiredimagestags
 spec:
   crd:
     spec:
       names:
         kind: K8sRequiredImagesTags
-        listLind: K8sRequiredImagesListTags
-        plural: k8srequiredimagestags
-        singular: k8srequiredimagestags
       validation:
         openAPIV3Schema:
           properties:
@@ -20,10 +17,3 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
-
-          violation[{"msg": msg, "details": {"value": val}}]{
-          tag = input.parameters.labels
-          images = input.review.objects.containers[_].images
-
-
-          }
