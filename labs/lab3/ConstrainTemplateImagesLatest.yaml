@@ -19,7 +19,10 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
-          violation[{"msg": "hello"}]
+          violation[{"msg": msg}]{
+
+          msg:=sprintf("Some example")
+          }
 ---
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sRequiredImagesTags
