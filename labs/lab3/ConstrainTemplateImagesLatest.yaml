@@ -20,10 +20,12 @@ spec:
        rego: |
           package k8srequiredimagestags
 
-          violation[{"msg": msg}]{
-          image:=input.review.object.spec.containers[_].image
 
-          msg:=sprintf("Image %v missing tag", image)
+
+          violation[{"msg": msg}]{
+          image:=input.review.kind.kind="Pod"
+
+          msg:=sprintf("Pod not allowd", image)
 
                     }
           violation[{"msg": msg}]{
