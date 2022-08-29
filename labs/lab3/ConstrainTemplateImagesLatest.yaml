@@ -19,3 +19,5 @@ spec:
      - target: admission.k8s.gatekeeper.sh
        rego: |
           package k8srequiredimagestags
+
+          violation[{"msg": "hello"}]
