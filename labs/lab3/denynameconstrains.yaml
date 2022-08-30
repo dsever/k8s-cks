@@ -1,5 +1,5 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
-kind: ConstrainTemplate
+kind: ConstraintTemplate
 metadata:
   name: k8snamedeny
 spec:
