@@ -7,7 +7,7 @@ spec:
     spec:
       names:
         kind: K8sDenyName
-      validations:
+      validation:
         openAPIV3Schema:
           properties:
             invalidName:
