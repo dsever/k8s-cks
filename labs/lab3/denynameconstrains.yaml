@@ -17,6 +17,7 @@ spec:
       rego: |
             package k8sdenyname
             violation[{"msg": msg}]{
+            input.review.operation="CREATE"
             input.review.objects.metadata.name == input.parameters.invalidName
             msg := sprintf("Name %v is not allowed", [input.parameters.invalidName])
             }
