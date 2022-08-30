@@ -1,7 +1,7 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata:
-  name: k8snamedeny
+  name: k8sdenyname
 spec:
   crd:
     spec:
@@ -15,7 +15,7 @@ spec:
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
-            package k8snamedeny
+            package k8sdenyname
             violation[{"msg": msg}]{
             input.review.objects.metadata.name == input.parameters.invalidName
             msg := sprintf("Name %v is not allowed", [input.parameters.invalidName])
