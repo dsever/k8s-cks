@@ -26,12 +26,12 @@ kind: K8sDenyName
 name: no-policy-validation
 spec:
   parameters:
-    invalidName: "policy-Validation"
+    invalidName: "policy-validation"
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "policy-Validation"
+  name: "policy-validation"
 spec:
   containers:
   - image: nginx
