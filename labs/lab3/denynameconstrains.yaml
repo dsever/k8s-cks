@@ -33,4 +33,4 @@ kind: Pod
 metadata:
   name: "policy-Validation"
 spec:
-  image: nginx  
+  image: nginx
