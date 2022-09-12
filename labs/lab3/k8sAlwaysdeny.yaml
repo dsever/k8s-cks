@@ -1,0 +1,34 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstrainTemplate
+metadata:
+    name: k8salwaysdeny
+spec:
+    crd:
+        spec:
+            names:
+                kind: K8sAlwaysDeny
+            validation:
+                openAPIV3Schema:
+                    properties:
+                        message:
+                            type: string
+    targets:
+        - target: admission.k8s.gatekeeper.sh
+          rego: |
+              package k8salwaysdeny
+              violation[{"msg": msg}]{
+              1 > 0
+              msg := input.parameters.message 
+              }
+---
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAlwaysDeny
+metadata:
+    name: pod-always-deny
+spec:
+    match:
+        kinds:
+            - apiGroups: [""]
+              kings: ["Pod"]
+    parameters:
+        message: "Access DENIED"
