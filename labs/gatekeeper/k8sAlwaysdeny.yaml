@@ -1,5 +1,5 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
-kind: ConstrainTemplate
+kind: ConstraintTemplate
 metadata:
     name: k8salwaysdeny
 spec:
@@ -18,10 +18,11 @@ spec:
               package k8salwaysdeny
               violation[{"msg": msg}]{
               1 > 0
+              1 < 0
               msg := input.parameters.message 
               }
 ---
-apiversion: constraints.gatekeeper.sh/v1beta1
+apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sAlwaysDeny
 metadata:
     name: pod-always-deny
@@ -29,6 +30,6 @@ spec:
     match:
         kinds:
             - apiGroups: [""]
-              kings: ["Pod"]
+              kinds: ["Pod"]
     parameters:
         message: "Access DENIED"
