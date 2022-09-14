@@ -1,0 +1,48 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: limitone
+    namespace: prod-a
+rules:
+    - apiGroups: [""]
+      resources: ["pods"]
+      verbs: ["get", "watch", "delete"]
+--- 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: manage-pods
+    namespace: prod-a
+subjects:
+    - kind: User
+      name: paul
+      apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: limitone
+    apiGroup: rbac.authorization.k8s.io    
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: dev-ns
+    namespace: dev-ns
+rules:
+    - apiGroups: [""]
+      resources: ["pods"]
+      verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: manage-dev-ns-pods
+    namespace: dev-ns
+subjects:
+    - kind: User
+      name: dan
+      apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: dev-ns
+    apiGroup: rbac.authorization.k8s.io
+

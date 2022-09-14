@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: allow-simple-role
+    namespace: prod-b
+rules:
+    - apiGroups: [""]
+      resources: ["pods"]
+      verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding 
+metadata:
+    name: allow-simple-role-binding
+    namespace: prod-b
+subjects:
+    - kind: ServiceAccount 
+      name: simple-sa
+      namespace: prod-b
+roleRef:
+    kind: Role
+    name: allow-simple-role 
+    apiGroup: rbac.authorization.k8s.io
+
+
