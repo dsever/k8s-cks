@@ -1,0 +1,20 @@
+- --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt
+   - --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt
+   - --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key
+   - --etcd-servers=https://127.0.0.1:2379
+
+
+   root@master-1:/home/ubuntu/k8s-cks/labs/secret-enc# kubectl -n kube-system exec -it etcd-master-1 -- sh -c "ETCDCTL_API=3
+
+   etcdctl --endpoints=https://127.0.0.1:2379  --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key  get /registry/secrets/default/first"
+   /registry/secrets/default/first
+   k8s
+
+```
+   v1Secret�
+   �
+   firstdefault"*$162453c3-0e78-4e89-92ed-74c29b10779c2����z�`
+   kubectl-createUpdatev����FieldsV1:,
+   *{"f:data":{".":{},"f:key":{}},"f:type":{}}B
+   keyfindmeOpaque"
+```
